@@ -6,7 +6,7 @@ Quacker is a web-based Tamagotchi game for young adults to do spend time between
 
 We decided to create a project that is fun for users to use for than a functionality program. Users generally sshould be playing the game as a pastime hobby between breaks during work, school, etc.
 
-## Installation
+## Installation:
 
 Download programming languages:
 
@@ -33,7 +33,7 @@ We will be using the GitHub Flow branching strategy to work on this project, whe
 
 Here: https://docs.github.com/en/get-started/using-github/github-flow
 
-## How to Contribute
+## How to Contribute:
  
 ### 1. Install Relevant software
 
