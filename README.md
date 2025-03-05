@@ -1,10 +1,10 @@
 # Quacker
 
-Quacker is a web-based Tamagotchi game for young adults to do spend time between school, work , and etc. Quacker is the name of the duck.
+Quacker is a web-based task manager with Tomagatchi elements for young adults to organize tasks on their computer.
 
 ## Motivation:
 
-We decided to create a project that is fun for users to use for than a functionality program. Users generally sshould be playing the game as a pastime hobby between breaks during work, school, etc.
+The task manager adds a fun spin on a task managing and organization webapp. The problem with task managers is that they organize tasks for users to do, but doesn't motivate them to complete tasks. Some users end up missing task if they are on a deadline or procastinate, Quacker should fix this by making the tasks apart of a webgame. 
 
 ## Installation:
 
