@@ -32,7 +32,7 @@ Pull requests are not necessary if your code has been 100% bug free. For tasks, 
 
 We will be using the GitHub Flow branching strategy to work on this project, where features are worked on in separate branches and then merged in the main branch after testing. Make a pull request to get any other collaborator to review and discuss the feature before merging.
 
-Here: https://docs.github.com/en/get-started/using-github/github-flow
+Download: https://docs.github.com/en/get-started/using-github/github-flow
 
 ## How to Contribute:
  
