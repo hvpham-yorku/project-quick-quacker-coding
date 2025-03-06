@@ -28,21 +28,21 @@ reacts dynamically to user behaviour. Unlike Otto and Finch, which focuses on ei
 limited engagement, Quick Quacker provides an immersive system of behavioural feedback, customizable interactions, and
 productivity insights 
 ### Key Differences 
-**1. Behavioural Feedback and Mood System**
+1. Behavioural Feedback and Mood System
   - Quick Quacker's virtual duck reacts to task completion and neglect, displaying emotions, throwing tantrums, or refusing to
     evolve
   - Unlike Otto, which provides on rewards, Quick Quacker adds an engaging emotional layer
-**2. Free-to-Use Core Features**
+2. Free-to-Use Core Features
   - Unlike Otto and Finch, which requires payment for plenty of other features, Quicker Quacker aims to provide core
     productivity features for free
-**3. Advanced Gamification and Customization**
+3. Advanced Gamification and Customization
   - Quack Coins and Customizable Duck: Users earn coins to obtain outfits, hats, and accessories for their pet
   - Quack Notifications and Sound Effects: Quacker actively reminds users with playful or urgent messages
   - Mini-Challenges and Quests: Encourages users to complete productivity goals
-**4. Productivity Insights and Habit Information**
+4. Productivity Insights and Habit Information
   - Unlike Finch, which focuses on emotional well-being, Quick Quacker provides actionable insights on productivity trends,
     streaks, and personalized habit tips
-**5. Task Management System with Interactable Elements**
+5. Task Management System with Interactable Elements
   - Task categories, reminders, priority levels, and voice-command quick add features create a seamless and efficient task
     management experience
   - Duck-interactive reminders make task completion more engaging
