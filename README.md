@@ -4,7 +4,8 @@ Quacker is a web-based task manager with Tomagatchi elements for young adults to
 
 ## Motivation:
 
-The task manager adds a fun spin on a task managing and organization webapp. The problem with task managers is that they organize tasks for users to do, but doesn't motivate them to complete tasks. Some users end up missing task if they are on a deadline or procastinate, Quacker should fix this by making the tasks apart of a webgame. 
+The task manager adds a fun spin on a task managing and organization webapp, in which it encourages more productivity in users since it turns their tasks into more of a mission in a game rather than something they have to do. This is by completing tasks to obtain food to nuture and involve the user's duck, and neglecting tasks may result in their acting sad, refusing to evlove, and reacting humorously is missed tasks. There will be daily streaks that gives rewards based on the length to reinforce the user's habit of doing their tasks everyday. The goal is to have a intuitive, feature-rich task manager that combines habit formation, motivation, and entertainment in a seamless experience.
+ 
 
 ## Installation:
 
