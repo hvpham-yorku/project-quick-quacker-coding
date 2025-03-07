@@ -12,11 +12,13 @@
 + The virtual pet responds dynamically to user actions.
 + Neglecting tasks results in appropriate duck behaviors (e.g., sadness, refusal to evolve).
 + Users can customize their duck with earned “Quack Coins.”
+  
 **Gamification & Rewards System:**
 + Completing tasks grants XP, influences evolution, and unlocks rewards.
 + Streaks and achievement badges are tracked and displayed.
 + Mini-challenges and quests work and provide appropriate incentives.
 + “Quack Coins” can be earned and spent on customizations.
+  
 **Productivity Insights & Tracking:**
 + Task completion rates and performance graphs update dynamically.
 + The app provides personalized habit-building suggestions.
