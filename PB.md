@@ -2,6 +2,7 @@
 
 ## Users Stories of Key Features
 
+### Core Features
 1. As Anna Chen, I want to easily add tasks with a one-tap button so I can capture my to-dos quickly.
 
 2. As Anna Chen, I want to organize my tasks based on categories (work, study, and personal) so that I can stay focused and easily prioritize important tasks.
@@ -19,6 +20,8 @@
 8. As Ryan Mitchell, I want to integrate my calendar with the app so that I can manage both my personal and work schedules seamlessly.
 
 9. As Anna Chen, I want a distraction-free mode that temporarily hides unnecessary features so that I can focus better when studying.
+
+### Additional Features
 
 10. As a user, I want my duck’s quack notifications to adjust based on task urgency so that I can better prioritize my tasks.
 
