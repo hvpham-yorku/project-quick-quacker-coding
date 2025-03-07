@@ -8,7 +8,11 @@ Quacker adds a unique twist to traditional task management by turning productivi
  
 ## Installation:
 
-Download programming languages:
+Build and runc ode on these programming languages:
+
+### CSS
+
+language used to write HTML documents
 
 ### JavaScript
 
