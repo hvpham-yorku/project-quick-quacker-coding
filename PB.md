@@ -19,7 +19,7 @@
 
 8. As Ryan Mitchell, I want to integrate my calendar with the app so that I can manage both my personal and work schedules seamlessly.
 
-9. As Anna Chen, I want a distraction-free mode that temporarily hides unnecessary features so that I can focus better when studying.
+9. As Anna Chen, I want to mark high-priority tasks so that I can focus on what matters most each day.
 
 ### Additional Features
 
