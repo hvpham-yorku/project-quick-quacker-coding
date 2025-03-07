@@ -58,15 +58,19 @@ Assign yourself an issue, then make a branch to work on it. All branches should 
 
 ### 4. Complete the task 
 After the branch is made, complete the task
+
 Have your files be placed in the correct folders
+
 Here is some resources to help get organized: https://mitcommlab.mit.edu/broad/commkit/file-structure/
 
 ### 5. Add and commit your code
 Add and commit you code to the repo, then push it so it's in GitHub
+
 Use the Source Control tab to easily add and commit with typing the commands
 
 ### 6. Create a pull request
 Go to the GitHub repo and click on the pull requests tabs
+
 Create a new pull request with your branch merging into main
 
 ### 7. Discussion and Review
