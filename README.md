@@ -8,27 +8,23 @@ Quacker adds a unique twist to traditional task management by turning productivi
  
 ## Installation:
 
-Build and runc ode on these programming languages:
-
-### CSS
-
-language used to write HTML documents
+Build and run code on these programming languages:
 
 ### JavaScript
 
-a scripting language for adding interactivity
+A scripting language for adding interactivity
 
 ### HTML
 
-the markup language for structuring web pages 
+The markup language for structuring web pages 
 
 ### CSS
 
-a styling language used to design and format web pages by controlling layout, colours, fonts, and animations 
+A styling language used to design and format web pages by controlling layout, colours, fonts, and animations 
 
 ### SQL
 
-a database query language used to store, retreive, and manage data in relation databases
+A database query language used to store, retreive, and manage data in relation databases
 
 ### VS Code
 
@@ -49,12 +45,12 @@ Click link for more info on GitHub Flow: https://docs.github.com/en/get-started/
  
 ### 1. Install Relevant software
 
-please make sure you have the following on your computer
-VS Code
+Ensure you have the following on your computer:
+- VS Code
 
 ### 2. Clone the Repository
 
-clone the project by copying and pasting the command in the <> Code button, then open the project in VS Code
+Clone the project by copying and pasting the command in the <> Code button, then open the project in VS Code
 
 ### 3. Get a task + make a branch 
 
@@ -62,8 +58,8 @@ Assign yourself an issue, then make a branch to work on it. All branches should 
 
 ### 4. Complete the task 
 After the branch is made, complete the task
-have your files be placed in the correct folders
-here is some resources to help get organized: https://mitcommlab.mit.edu/broad/commkit/file-structure/
+Have your files be placed in the correct folders
+Here is some resources to help get organized: https://mitcommlab.mit.edu/broad/commkit/file-structure/
 
 ### 5. Add and commit your code
 Add and commit you code to the repo, then push it so it's in GitHub
