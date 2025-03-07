@@ -20,7 +20,7 @@
 
 9. As Anna Chen, I want a distraction-free mode that temporarily hides unnecessary features so that I can focus better when studying.
 
-10.As a user, I want my duck’s quack notifications to adjust based on task urgency so that I can better prioritize my tasks.
+10. As a user, I want my duck’s quack notifications to adjust based on task urgency so that I can better prioritize my tasks.
 
 11. As a user, I want to view task completion rates on a weekly or monthly basis so that I can track my productivity trends.
 
