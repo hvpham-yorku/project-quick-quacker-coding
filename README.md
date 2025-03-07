@@ -1,30 +1,37 @@
 # Quacker
 
-Quacker is a web-based task manager with Tomagatchi elements for young adults to organize tasks on their computer.
+Quacker is a web-based task manager with gamification elements designed to help young adults organize their tasks in a fun and engaging way.
 
 ## Motivation:
 
-The task manager adds a fun spin on a task managing and organization webapp, in which it encourages more productivity in users since it turns their tasks into more of a mission in a game rather than something they have to do. This is by completing tasks to obtain food to nuture and involve the user's duck, and neglecting tasks may result in their acting sad, refusing to evlove, and reacting humorously is missed tasks. There will be daily streaks that gives rewards based on the length to reinforce the user's habit of doing their tasks everyday. The goal is to have a intuitive, feature-rich task manager that combines habit formation, motivation, and entertainment in a seamless experience.
+Quacker adds a unique twist to traditional task management by turning productivity into a game-like experience. Instead of viewing tasks as chores, users complete them to earn food and nurture their virtual duck, making organization more rewarding. Neglecting tasks can result in the duck acting sad, refusing to evolve, or reacting humorously to missed responsibilities. To encourage consistency to users, daily streaks will unlock special rewards based on task completion habits, reinforcing positive behaviour. The goal is to create an intuitive, feature-rich task manage that seasmlessly blends habit information, making productivity more enjoyable and effective. 
  
-
 ## Installation:
 
 Download programming languages:
 
 ### JavaScript
 
-a scripting language used for implementing features to websites.
+a scripting language for adding interactivity
 
 ### HTML
 
-a scripting language used to create websites
+the markup language for structuring web pages 
+
+### CSS
+
+a styling language used to design and format web pages by controlling layout, colours, fonts, and animations 
+
+### SQL
+
+a database query language used to store, retreive, and manage data in relation databases
 
 ### VS Code
 
-An IDE used for various languages 
+An IDE used for various languages, coding and debugging 
 Download: https://code.visualstudio.com/download
 
-Both JavaScript and HTML do not need to be downloaded and can be code on VS Code
+HTML, CSS and JavaScript do not need to be downloaded and can be coded on VS Code
 
 ## Contribution: 
 
