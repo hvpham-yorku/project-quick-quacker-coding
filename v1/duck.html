@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Duck</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(skyblue, #87CEEB);
+            overflow: hidden;
+        }
+        
+        .pond {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(to bottom, #4682B4, #1E90FF);
+            border-top-left-radius: 50% 20%;
+            border-top-right-radius: 50% 20%;
+        }
+        
+        .duck {
+            position: absolute;
+            width: 120px;
+            height: 80px;
+            bottom: 120px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+        
+        .duck-body {
+            position: absolute;
+            width: 80px;
+            height: 60px;
+            background-color: #FFD700;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            z-index: 2;
+        }
+        
+        .duck-head {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: #FFD700;
+            border-radius: 50%;
+            top: -20px;
+            left: 60px;
+            z-index: 3;
+        }
+        
+        .duck-bill {
+            position: absolute;
+            width: 30px;
+            height: 20px;
+            background-color: #FF8C00;
+            border-radius: 50% 50% 50% 50% / 20% 20% 80% 80%;
+            top: 15px;
+            left: 90px;
+            z-index: 4;
+        }
+        
+        .duck-eye {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: black;
+            border-radius: 50%;
+            top: 5px;
+            left: 80px;
+            z-index: 5;
+        }
+        
+        .wing {
+            position: absolute;
+            width: 40px;
+            height: 30px;
+            background-color: #FFC125;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            top: 15px;
+            left: 15px;
+            transform-origin: 100% 50%;
+            z-index: 1;
+        }
+        
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            opacity: 0;
+        }
+        
+        @keyframes waddle {
+            0% { transform: translateX(-50%) rotate(0deg); }
+            25% { transform: translateX(-50%) rotate(5deg); }
+            50% { transform: translateX(-50%) rotate(0deg); }
+            75% { transform: translateX(-50%) rotate(-5deg); }
+            100% { transform: translateX(-50%) rotate(0deg); }
+        }
+        
+        @keyframes swim {
+            0% { left: -100px; }
+            100% { left: calc(100% + 100px); }
+        }
+        
+        @keyframes flapWing {
+            0% { transform: rotate(0deg); }
+            50% { transform: rotate(-20deg); }
+            100% { transform: rotate(0deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="pond"></div>
+    <div class="duck">
+        <div class="duck-body"></div>
+        <div class="duck-head"></div>
+        <div class="duck-bill"></div>
+        <div class="duck-eye"></div>
+        <div class="wing"></div>
+    </div>
+
+    <script>
+        const duck = document.querySelector('.duck');
+        const wing = document.querySelector('.wing');
+        const pond = document.querySelector('.pond');
+        
+        // Initial position
+        let direction = 1; // 1: right, -1: left
+        
+        // Swimming animation
+        function animate() {
+            // Set initial position
+            duck.style.left = '-100px';
+            duck.style.animation = 'swim 15s linear forwards, waddle 1s infinite';
+            
+            // Wing flapping animation
+            setInterval(() => {
+                wing.style.animation = 'flapWing 0.5s';
+                setTimeout(() => {
+                    wing.style.animation = '';
+                }, 500);
+            }, 3000);
+            
+            // Create ripple effect
+            setInterval(createRipple, 1000);
+            
+            // Change direction after completing one trip
+            setTimeout(() => {
+                direction *= -1;
+                duck.style.transform = `translateX(-50%) scaleX(${direction})`;
+                duck.style.left = '100%';
+                duck.style.animation = 'swim 15s linear reverse forwards, waddle 1s infinite';
+                
+                // Reset animation after reaching the other side
+                setTimeout(animate, 15000);
+            }, 15000);
+        }
+        
+        // Create water ripple effect
+        function createRipple() {
+            const ripple = document.createElement('div');
+            ripple.className = 'ripple';
+            
+            // Position the ripple near the duck
+            const duckRect = duck.getBoundingClientRect();
+            const left = duckRect.left + duckRect.width / 2;
+            ripple.style.left = `${left}px`;
+            ripple.style.bottom = '140px';
+            
+            // Animate the ripple
+            ripple.style.width = '0';
+            ripple.style.height = '0';
+            document.body.appendChild(ripple);
+            
+            ripple.animate([
+                { width: '0', height: '0', opacity: 1 },
+                { width: '50px', height: '50px', opacity: 0 }
+            ], {
+                duration: 2000,
+                easing: 'ease-out'
+            }).onfinish = () => {
+                ripple.remove();
+            };
+        }
+        
+        // Start the animation
+        animate();
+    </script>
+</body>
+</html>

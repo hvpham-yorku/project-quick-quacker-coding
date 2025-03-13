@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quack Tasks - Duck Themed Task Manager</title>
+    <style>
+        :root {
+            --duck-yellow: #FFD700;
+            --duck-orange: #FF8C00;
+            --duck-brown: #8B4513;
+            --pond-blue: #4682B4;
+            --light-blue: #87CEEB;
+            --reed-green: #228B22;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-blue);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background-color: var(--duck-yellow);
+            color: var(--duck-brown);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .duck-icon {
+            display: inline-block;
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+        
+        .add-task-container {
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-bottom: 3px solid var(--duck-orange);
+        }
+        
+        .task-input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        input, select, button {
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        input {
+            flex-grow: 1;
+        }
+        
+        button {
+            background-color: var(--duck-yellow);
+            color: var(--duck-brown);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        
+        button:hover {
+            background-color: var(--duck-orange);
+            color: white;
+        }
+        
+        .task-list-container {
+            padding: 20px;
+        }
+        
+        .task-filters {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .filter-group {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .filter-btn {
+            padding: 5px 10px;
+            background-color: #f1f1f1;
+            color: #555;
+        }
+        
+        .filter-btn.active {
+            background-color: var(--duck-yellow);
+            color: var(--duck-brown);
+        }
+        
+        .tasks {
+            list-style: none;
+        }
+        
+        .task-item {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .task-item:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .task-check {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--duck-yellow);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+        
+        .task-check.checked {
+            background-color: var(--duck-yellow);
+        }
+        
+        .task-text {
+            flex-grow: 1;
+        }
+        
+        .task-item.completed .task-text {
+            text-decoration: line-through;
+            color: #999;
+        }
+        
+        .task-priority {
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .priority-high {
+            background-color: #ffcccc;
+            color: #ff4444;
+        }
+        
+        .priority-medium {
+            background-color: #ffffcc;
+            color: #ffaa00;
+        }
+        
+        .priority-low {
+            background-color: #ccffcc;
+            color: #44aa44;
+        }
+        
+        .task-date {
+            font-size: 0.8rem;
+            color: #888;
+        }
+        
+        .task-actions {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .task-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            padding: 2px 5px;
+            color: #555;
+        }
+        
+        .edit-btn:hover {
+            color: var(--pond-blue);
+        }
+        
+        .delete-btn:hover {
+            color: red;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 30px;
+            color: #888;
+        }
+        
+        .duck-footer {
+            background-color: var(--pond-blue);
+            padding: 15px;
+            text-align: center;
+            color: white;
+        }
+        
+        .duck-decoration {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+        }
+        
+        .duck-head {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: var(--duck-yellow);
+            border-radius: 50%;
+            top: 0;
+            right: 0;
+        }
+        
+        .duck-bill {
+            position: absolute;
+            width: 15px;
+            height: 10px;
+            background-color: var(--duck-orange);
+            border-radius: 50% 50% 50% 50% / 20% 20% 80% 80%;
+            top: 15px;
+            right: -5px;
+        }
+        
+        .duck-eye {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: black;
+            border-radius: 50%;
+            top: 8px;
+            right: 8px;
+        }
+        
+        @media (max-width: 600px) {
+            .task-filters {
+                flex-direction: column;
+            }
+            
+            .task-item {
+                flex-wrap: wrap;
+            }
+            
+            .task-actions {
+                width: 100%;
+                justify-content: flex-end;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="duck-decoration">
+                <div class="duck-head"></div>
+                <div class="duck-bill"></div>
+                <div class="duck-eye"></div>
+            </div>
+            <h1><span class="duck-icon">🦆</span> Quack Tasks</h1>
+            <p>Get your ducks in a row!</p>
+        </header>
+        
+        <div class="add-task-container">
+            <div class="task-input-group">
+                <input type="text" id="taskInput" placeholder="What do you need to do?" autofocus>
+                <select id="prioritySelect">
+                    <option value="low">Low</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="high">High</option>
+                </select>
+                <button id="addTaskBtn">Add Task</button>
+            </div>
+            <div id="editContainer" style="display: none;">
+                <div class="task-input-group">
+                    <input type="text" id="editTaskInput">
+                    <select id="editPrioritySelect">
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                    <button id="updateTaskBtn">Update</button>
+                    <button id="cancelEditBtn">Cancel</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="task-list-container">
+            <div class="task-filters">
+                <div class="filter-group">
+                    <button id="allFilter" class="filter-btn active">All</button>
+                    <button id="activeFilter" class="filter-btn">Active</button>
+                    <button id="completedFilter" class="filter-btn">Completed</button>
+                </div>
+                <div class="filter-group">
+                    <button id="clearCompletedBtn" class="filter-btn">Clear Completed</button>
+                </div>
+            </div>
+            
+            <ul id="taskList" class="tasks">
+                <!-- Tasks will be added here by JavaScript -->
+            </ul>
+            
+            <div id="emptyState" class="empty-state">
+                <p>No tasks yet! Add a task to get started.</p>
+                <p>🦆 Quack! 🦆</p>
+            </div>
+        </div>
+        
+        <div class="duck-footer">
+            <p>Paddle your way through tasks, one quack at a time!</p>
+        </div>
+    </div>
+
+    <script>
+        // DOM Elements
+        const taskInput = document.getElementById('taskInput');
+        const prioritySelect = document.getElementById('prioritySelect');
+        const addTaskBtn = document.getElementById('addTaskBtn');
+        const taskList = document.getElementById('taskList');
+        const emptyState = document.getElementById('emptyState');
+        const editContainer = document.getElementById('editContainer');
+        const editTaskInput = document.getElementById('editTaskInput');
+        const editPrioritySelect = document.getElementById('editPrioritySelect');
+        const updateTaskBtn = document.getElementById('updateTaskBtn');
+        const cancelEditBtn = document.getElementById('cancelEditBtn');
+        const allFilterBtn = document.getElementById('allFilter');
+        const activeFilterBtn = document.getElementById('activeFilter');
+        const completedFilterBtn = document.getElementById('completedFilter');
+        const clearCompletedBtn = document.getElementById('clearCompletedBtn');
+        
+        // State variables
+        let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+        let currentFilter = 'all';
+        let currentEditId = null;
+        
+        // Initialize the app
+        renderTasks();
+        
+        // Event Listeners
+        addTaskBtn.addEventListener('click', addTask);
+        taskInput.addEventListener('keypress', e => {
+            if (e.key === 'Enter') addTask();
+        });
+        updateTaskBtn.addEventListener('click', updateTask);
+        cancelEditBtn.addEventListener('click', cancelEdit);
+        allFilterBtn.addEventListener('click', () => setFilter('all'));
+        activeFilterBtn.addEventListener('click', () => setFilter('active'));
+        completedFilterBtn.addEventListener('click', () => setFilter('completed'));
+        clearCompletedBtn.addEventListener('click', clearCompleted);
+        
+        // Functions
+        function addTask() {
+            const text = taskInput.value.trim();
+            if (text === '') return;
+            
+            const newTask = {
+                id: Date.now(),
+                text: text,
+                completed: false,
+                priority: prioritySelect.value,
+                date: new Date().toLocaleDateString()
+            };
+            
+            tasks.push(newTask);
+            saveTasks();
+            renderTasks();
+            
+            taskInput.value = '';
+            taskInput.focus();
+            
+            // Easter egg - quack sound on task add
+            if (Math.random() < 0.3) {
+                const quack = new Audio('https://cdnjs.cloudflare.com/ajax/libs/ion-sound/3.0.7/sounds/branch_break.mp3');
+                quack.play().catch(e => console.log('Quack audio failed to play'));
+            }
+        }
+        
+        function toggleTaskComplete(id) {
+            tasks = tasks.map(task => {
+                if (task.id === id) {
+                    return { ...task, completed: !task.completed };
+                }
+                return task;
+            });
+            
+            saveTasks();
+            renderTasks();
+        }
+        
+        function deleteTask(id) {
+            tasks = tasks.filter(task => task.id !== id);
+            saveTasks();
+            renderTasks();
+        }
+        
+        function editTask(id) {
+            currentEditId = id;
+            const task = tasks.find(task => task.id === id);
+            
+            editTaskInput.value = task.text;
+            editPrioritySelect.value = task.priority;
+            
+            editContainer.style.display = 'block';
+            editTaskInput.focus();
+        }
+        
+        function updateTask() {
+            if (!currentEditId) return;
+            
+            const updatedText = editTaskInput.value.trim();
+            if (updatedText === '') return;
+            
+            tasks = tasks.map(task => {
+                if (task.id === currentEditId) {
+                    return {
+                        ...task,
+                        text: updatedText,
+                        priority: editPrioritySelect.value
+                    };
+                }
+                return task;
+            });
+            
+            cancelEdit();
+            saveTasks();
+            renderTasks();
+        }
+        
+        function cancelEdit() {
+            currentEditId = null;
+            editContainer.style.display = 'none';
+        }
+        
+        function setFilter(filter) {
+            currentFilter = filter;
+            
+            // Update active filter button
+            [allFilterBtn, activeFilterBtn, completedFilterBtn].forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            if (filter === 'all') allFilterBtn.classList.add('active');
+            if (filter === 'active') activeFilterBtn.classList.add('active');
+            if (filter === 'completed') completedFilterBtn.classList.add('active');
+            
+            renderTasks();
+        }
+        
+        function clearCompleted() {
+            tasks = tasks.filter(task => !task.completed);
+            saveTasks();
+            renderTasks();
+        }
+        
+        function saveTasks() {
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+        }
+        
+        function renderTasks() {
+            // Filter tasks based on current filter
+            let filteredTasks = [...tasks];
+            
+            if (currentFilter === 'active') {
+                filteredTasks = filteredTasks.filter(task => !task.completed);
+            } else if (currentFilter === 'completed') {
+                filteredTasks = filteredTasks.filter(task => task.completed);
+            }
+            
+            // Sort by priority (high to low) and then by date (newest first)
+            filteredTasks.sort((a, b) => {
+                const priorityOrder = { high: 0, medium: 1, low: 2 };
+                return priorityOrder[a.priority] - priorityOrder[b.priority] || 
+                       new Date(b.date) - new Date(a.date);
+            });
+            
+            // Clear the list
+            taskList.innerHTML = '';
+            
+            // Show empty state if no tasks
+            if (filteredTasks.length === 0) {
+                emptyState.style.display = 'block';
+                if (currentFilter === 'all' && tasks.length === 0) {
+                    emptyState.innerHTML = '<p>No tasks yet! Add a task to get started.</p><p>🦆 Quack! 🦆</p>';
+                } else {
+                    emptyState.innerHTML = '<p>No ' + currentFilter + ' tasks!</p><p>🦆 Quack! 🦆</p>';
+                }
+            } else {
+                emptyState.style.display = 'none';
+            }
+            
+            // Render each task
+            filteredTasks.forEach(task => {
+                const li = document.createElement('li');
+                li.className = `task-item ${task.completed ? 'completed' : ''}`;
+                
+                const checkbox = document.createElement('div');
+                checkbox.className = `task-check ${task.completed ? 'checked' : ''}`;
+                checkbox.innerHTML = task.completed ? '✓' : '';
+                checkbox.addEventListener('click', () => toggleTaskComplete(task.id));
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'task-text';
+                textSpan.textContent = task.text;
+                
+                const prioritySpan = document.createElement('span');
+                prioritySpan.className = `task-priority priority-${task.priority}`;
+                prioritySpan.textContent = task.priority.charAt(0).toUpperCase() + task.priority.slice(1);
+                
+                const dateSpan = document.createElement('span');
+                dateSpan.className = 'task-date';
+                dateSpan.textContent = task.date;
+                
+                const actionsDiv = document.createElement('div');
+                actionsDiv.className = 'task-actions';
+                
+                const editBtn = document.createElement('button');
+                editBtn.className = 'task-btn edit-btn';
+                editBtn.innerHTML = '✏️';
+                editBtn.addEventListener('click', () => editTask(task.id));
+                
+                const deleteBtn = document.createElement('button');
+                deleteBtn.className = 'task-btn delete-btn';
+                deleteBtn.innerHTML = '🗑️';
+                deleteBtn.addEventListener('click', () => deleteTask(task.id));
+                
+                actionsDiv.appendChild(editBtn);
+                actionsDiv.appendChild(deleteBtn);
+                
+                li.appendChild(checkbox);
+                li.appendChild(textSpan);
+                li.appendChild(prioritySpan);
+                li.appendChild(dateSpan);
+                li.appendChild(actionsDiv);
+                
+                taskList.appendChild(li);
+            });
+        }
+    </script>
+</body>
+</html>
