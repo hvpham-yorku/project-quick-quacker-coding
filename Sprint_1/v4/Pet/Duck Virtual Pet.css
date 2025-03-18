@@ -1,0 +1,438 @@
+:root {
+    --duck-yellow: #FFD700;
+    --duck-orange: #FF8C00;
+    --duck-brown: #8B4513;
+    --pond-blue: #4682B4;
+    --light-blue: #87CEEB;
+    --reed-green: #228B22;
+    --bread-brown: #D2691E;
+    --water-blue: #00BFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(to bottom, var(--light-blue) 70%, var(--pond-blue) 70%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.game-container {
+    width: 100%;
+    max-width: 600px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.header {
+    background-color: var(--duck-yellow);
+    color: var(--duck-brown);
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+.stats-container {
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-bottom: 3px solid var(--duck-orange);
+    display: flex;
+    justify-content: space-between;
+}
+
+.stat {
+    text-align: center;
+    padding: 10px;
+    flex: 1;
+}
+
+.stat-label {
+    font-weight: bold;
+    color: var(--duck-brown);
+    margin-bottom: 5px;
+}
+
+.stat-value {
+    font-size: 1.2rem;
+}
+
+.progress-container {
+    height: 15px;
+    background-color: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    border-radius: 10px;
+    transition: width 0.5s ease;
+}
+
+.xp-bar {
+    background-color: var(--duck-yellow);
+}
+
+.hunger-bar {
+    background-color: var(--bread-brown);
+}
+
+.thirst-bar {
+    background-color: var(--water-blue);
+}
+
+.game-area {
+    position: relative;
+    height: 300px;
+    background: linear-gradient(to bottom, var(--light-blue) 70%, var(--pond-blue) 70%);
+    overflow: hidden;
+}
+
+.duck {
+    position: absolute;
+    width: 120px;
+    height: 80px;
+    bottom: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.5s ease;
+}
+
+.duck-body {
+    position: absolute;
+    width: 80px;
+    height: 60px;
+    background-color: var(--duck-yellow);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    z-index: 2;
+}
+
+.duck-head {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: var(--duck-yellow);
+    border-radius: 50%;
+    top: -20px;
+    left: 60px;
+    z-index: 3;
+    transition: transform 0.3s ease;
+}
+
+.duck-bill {
+    position: absolute;
+    width: 30px;
+    height: 20px;
+    background-color: var(--duck-orange);
+    border-radius: 50% 50% 50% 50% / 20% 20% 80% 80%;
+    top: 15px;
+    left: 90px;
+    z-index: 4;
+}
+
+.duck-eye {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: black;
+    border-radius: 50%;
+    top: 5px;
+    left: 80px;
+    z-index: 5;
+}
+
+.duck-wing {
+    position: absolute;
+    width: 40px;
+    height: 30px;
+    background-color: #FFC125;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    top: 15px;
+    left: 15px;
+    transform-origin: 100% 50%;
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+.controls {
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+}
+
+.control-btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 50px;
+    background-color: var(--duck-yellow);
+    color: var(--duck-brown);
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.control-btn:hover {
+    background-color: var(--duck-orange);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.control-btn:active {
+    transform: translateY(0);
+}
+
+.food, .water {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    opacity: 0;
+    bottom: 50px;
+    transition: all 0.5s ease;
+}
+
+.food {
+    background-color: var(--bread-brown);
+    left: 30%;
+}
+
+.water {
+    background-color: var(--water-blue);
+    right: 30%;
+}
+
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    bottom: 60px;
+    opacity: 0;
+}
+
+.level-up {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--duck-yellow);
+    color: var(--duck-brown);
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+    opacity: 0;
+    transition: all 0.5s ease;
+    z-index: 10;
+}
+
+.mood {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.egg {
+    position: absolute;
+    width: 25px;
+    height: 35px;
+    background-color: white;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    bottom: 60px;
+    left: 45%;
+    opacity: 0;
+    z-index: 1;
+    transition: all 0.5s ease;
+}
+
+.duck-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--duck-brown);
+}
+
+.settings {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--duck-brown);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    max-width: 400px;
+    width: 90%;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #555;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--duck-brown);
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.save-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--duck-yellow);
+    color: var(--duck-brown);
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.save-btn:hover {
+    background-color: var(--duck-orange);
+    color: white;
+}
+
+.achievements {
+    padding: 15px;
+    background-color: #f0f0f0;
+}
+
+.achievement {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: white;
+    border-radius: 10px;
+    border-left: 5px solid var(--duck-yellow);
+    opacity: 0.5;
+}
+
+.achievement.unlocked {
+    opacity: 1;
+    border-left: 5px solid var(--duck-orange);
+}
+
+.achievement-title {
+    font-weight: bold;
+    color: var(--duck-brown);
+}
+
+.achievement-desc {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    75% { transform: rotate(-5deg); }
+}
+
+@keyframes flap {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(-15deg); }
+}
+
+@media (max-width: 600px) {
+    .stats-container {
+        flex-direction: column;
+    }
+    
+    .stat {
+        margin-bottom: 10px;
+    }
+    
+    .game-area {
+        height: 250px;
+    }
+    
+    .duck {
+        width: 100px;
+        height: 70px;
+        transform: translateX(-50%) scale(0.8);
+    }
+    
+    .controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .control-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
