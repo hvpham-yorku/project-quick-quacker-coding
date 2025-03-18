@@ -14,6 +14,10 @@ Build and run code on these programming languages:
 
 A scripting language for adding interactivity
 
+### PHP
+
+A serverside scripting language that will be used to connect databases to the web application
+
 ### HTML
 
 The markup language for structuring web pages 
