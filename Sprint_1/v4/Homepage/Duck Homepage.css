@@ -7,7 +7,7 @@
 }
 
 body {
-    background-color: #f0f8ff;
+    background-color: #f5f5f5;
     color: #333;
 }
 
@@ -15,12 +15,18 @@ body {
     display: flex;
     flex-direction: column;
     height: 100vh;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(180deg, #ffee9e 0%, #b3ebdd 100%);
+    border-radius: 15px;
+    overflow: hidden;
 }
 
 /* Duck Pet Section */
 .duck-pet-section {
     height: 50%;
-    background-color: #e6f7ff;
+    background-color: rgba(255, 255, 255, 0.3);
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -35,13 +41,14 @@ body {
 }
 
 .duck-header h1 {
-    color: #ff9900;
-    font-size: 28px;
+    color: #000;
+    font-size: 32px;
+    font-weight: bold;
     margin-bottom: 5px;
 }
 
 .duck-header p {
-    color: #666;
+    color: #555;
     font-size: 14px;
 }
 
@@ -70,12 +77,16 @@ body {
     width: 120px;
     height: 120px;
     z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .duck-body {
     width: 80px;
     height: 60px;
-    background-color: #ffd700;
+    background-color: #ffeb3b;
     border-radius: 50%;
     position: absolute;
     top: 30px;
@@ -85,7 +96,7 @@ body {
 .duck-head {
     width: 50px;
     height: 50px;
-    background-color: #ffd700;
+    background-color: #ffeb3b;
     border-radius: 50%;
     position: absolute;
     top: 10px;
@@ -95,7 +106,7 @@ body {
 .duck-bill {
     width: 30px;
     height: 15px;
-    background-color: #ff9900;
+    background-color: #ff9800;
     border-radius: 30%;
     position: absolute;
     top: 25px;
@@ -105,7 +116,7 @@ body {
 .duck-eye {
     width: 8px;
     height: 8px;
-    background-color: #000;
+    background-color: #555;
     border-radius: 50%;
     position: absolute;
     top: 20px;
@@ -115,7 +126,7 @@ body {
 .duck-wing {
     width: 40px;
     height: 20px;
-    background-color: #e6c700;
+    background-color: #ffcc4d;
     border-radius: 50%;
     position: absolute;
     top: 45px;
@@ -127,23 +138,28 @@ body {
 .organizer-section {
     height: 50%;
     display: flex;
-    padding: 20px;
-    background-color: #fffff0;
+    padding: 20px 40px;
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 /* Calendar Styles */
 .calendar-container {
     flex: 1;
-    padding: 15px;
-    background-color: white;
+    padding: 20px;
+    background-color: rgba(255, 238, 158, 0.4); /* Light yellow background matching the top gradient */
     border-radius: 15px;
     margin-right: 10px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    overflow: hidden; /* Ensures content doesn't overflow */
+    display: flex;
+    flex-direction: column;
 }
 
 .calendar-container h2 {
     text-align: center;
-    color: #ff9900;
+    color: #000;
+    font-size: 24px;
+    font-weight: bold;
     margin-bottom: 15px;
 }
 
@@ -155,7 +171,7 @@ body {
 }
 
 .calendar-header button {
-    background-color: #ff9900;
+    background-color: #ffcc00;
     color: white;
     border: none;
     width: 30px;
@@ -163,6 +179,7 @@ body {
     border-radius: 50%;
     cursor: pointer;
     font-size: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .weekdays {
@@ -177,10 +194,12 @@ body {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-gap: 5px;
+    flex: 1; /* Allow the calendar days to take up the remaining space */
+    font-size: 14px; /* Slightly smaller font size to fit better */
 }
 
 .calendar-days div {
-    height: 30px;
+    height: 28px; /* Slightly smaller height */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -189,27 +208,30 @@ body {
 }
 
 .calendar-days div:hover {
-    background-color: #fff0cc;
+    background-color: rgba(255, 204, 0, 0.2);
 }
 
 .calendar-days .current-day {
-    background-color: #ff9900;
+    background-color: #ffcc00;
     color: white;
 }
 
 /* To-Do List Styles */
 .todo-container {
     flex: 1;
-    padding: 15px;
-    background-color: white;
+    padding: 20px;
+    background-color: rgba(179, 235, 221, 0.4); /* Light mint background matching the bottom gradient */
     border-radius: 15px;
     margin-left: 10px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
 }
 
 .todo-container h2 {
     text-align: center;
-    color: #ff9900;
+    color: #000;
+    font-size: 24px;
+    font-weight: bold;
     margin-bottom: 15px;
 }
 
@@ -221,48 +243,170 @@ body {
 .todo-header input {
     flex: 1;
     padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    border: none;
+    border-radius: 20px;
     margin-right: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    outline: none;
+    color: #555;
+}
+
+.priority-select {
+    width: 100px;
+    padding: 8px;
+    border: none;
+    border-radius: 20px;
+    margin-right: 10px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    outline: none;
+    color: #555;
 }
 
 .todo-header button {
-    background-color: #ff9900;
+    background-color: #ffcc00;
     color: white;
     border: none;
     padding: 0 15px;
-    border-radius: 5px;
+    border-radius: 20px;
     cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 #todoList {
     list-style-type: none;
     max-height: calc(100% - 80px);
     overflow-y: auto;
+    padding-right: 5px; /* Add a little padding for scrollbar */
 }
 
-#todoList li {
-    padding: 10px;
-    border-bottom: 1px solid #eee;
+.task-card {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 15px;
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+/* Update task card styling based on priority */
+.task-card.priority-high {
+    background-color: rgba(255, 107, 107, 0.2); /* Light red background */
+    border-left: 4px solid #ff6b6b; /* Red left border */
+}
+
+.task-card.priority-medium {
+    background-color: rgba(255, 211, 105, 0.2); /* Light orange background */
+    border-left: 4px solid #ffd369; /* Orange left border */
+}
+
+.task-card.priority-low {
+    background-color: rgba(87, 204, 153, 0.2); /* Light green background */
+    border-left: 4px solid #57cc99; /* Green left border */
+}
+
+.task-content {
+    flex: 1;
+    display: flex;
     align-items: center;
 }
 
-#todoList li:hover {
-    background-color: #fff0cc;
+.task-text {
+    color: #333;
+    flex: 1;
 }
 
-#todoList li button {
+.task-priority {
+    padding: 3px 8px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-right: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.priority-high {
     background-color: #ff6b6b;
     color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
 }
 
-.completed {
+.priority-medium {
+    background-color: #ffd369;
+    color: #333;
+}
+
+.priority-low {
+    background-color: #57cc99;
+    color: white;
+}
+
+/* Style for the icons */
+.icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    margin-left: 8px;
+    transition: background-color 0.2s;
+}
+
+.check-icon {
+    color: #4CAF50; /* Green */
+}
+
+.trash-icon {
+    color: #F44336; /* Red */
+}
+
+.icon-button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.completed .task-text {
     text-decoration: line-through;
-    color: #999;
+    color: #6d3b1a;
+}
+
+.completed .check-icon {
+    background-color: #4CAF50;
+    color: white;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(3);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .organizer-section {
+        flex-direction: column;
+    }
+    
+    .calendar-container,
+    .todo-container {
+        width: 100%;
+        margin: 0 0 20px 0;
+    }
+    
+    .calendar-days {
+        font-size: 12px; /* Even smaller font size for mobile */
+    }
+    
+    .calendar-days div {
+        height: 24px; /* Smaller height for mobile */
+    }
 }
