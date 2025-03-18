@@ -75,6 +75,11 @@ Use the Source Control tab to easily add and commit with typing the commands
 ### 6. Create a pull request
 Go to the GitHub repo and click on the pull requests tabs
 
+## Sprint 1:
+
+### Login and Sign-up
+
+
 Create a new pull request with your branch merging into main
 
 ### 7. Discussion and Review
