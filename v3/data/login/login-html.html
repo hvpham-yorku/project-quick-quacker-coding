@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quick Quacker - Login</title>
+    <link rel="stylesheet" href="duckcss.css" />
+    <link rel="stylesheet" href="login.css" />
+  </head>
+  <body>
+    <div class="phone-container">
+      <div class="app-container">
+        <div class="header">
+          <div class="logo">Quacker</div>
+        </div>
+
+        <div class="duck-container">
+          <div class="clouds">
+            <div class="cloud"></div>
+            <div class="cloud"></div>
+            <div class="cloud"></div>
+          </div>
+          <div class="duck">
+            <div class="duck-eyes">
+              <div class="duck-eye"></div>
+              <div class="duck-eye"></div>
+            </div>
+            <div class="duck-bill"></div>
+          </div>
+        </div>
+
+        <div class="login-container">
+          <h2 class="login-title">Welcome Back!</h2>
+          
+          <div class="login-form">
+            <div class="input-group">
+              <label for="username">Username</label>
+              <input type="text" id="username" placeholder="Enter your username" />
+            </div>
+            
+            <div class="input-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" placeholder="Enter your password" />
+            </div>
+            
+            <div class="remember-forgot">
+              <div class="remember">
+                <input type="checkbox" id="remember" />
+                <label for="remember">Remember me</label>
+              </div>
+              <a href="#" class="forgot-link">Forgot Password?</a>
+            </div>
+            
+            <button id="login-button" class="login-button">Login</button>
+            
+            <div class="signup-link">
+              New to Quacker? <a href="#">Sign up</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pagination">
+          <div class="dot active"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="login.js"></script>
+  </body>
+</html>
