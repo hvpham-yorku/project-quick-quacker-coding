@@ -92,60 +92,116 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // To-Do List functionality
     const todoInput = document.getElementById('todoInput');
+    const prioritySelect = document.getElementById('prioritySelect');
     const addTodoBtn = document.getElementById('addTodo');
     const todoList = document.getElementById('todoList');
     
-    // Load saved todos from localStorage
-    let todos = JSON.parse(localStorage.getItem('todos')) || [];
+    let taskCount = 0;
     
-    function renderTodos() {
-        todoList.innerHTML = '';
-        todos.forEach((todo, index) => {
-            const li = document.createElement('li');
-            li.innerHTML = `
-                <span class="${todo.completed ? 'completed' : ''}">${todo.text}</span>
-                <div>
-                    <button class="toggle-btn" data-index="${index}">
-                        ${todo.completed ? 'Undo' : 'Done'}
-                    </button>
-                    <button class="delete-btn" data-index="${index}">Delete</button>
-                </div>
-            `;
-            todoList.appendChild(li);
-        });
-        
-        // Save todos to localStorage
-        localStorage.setItem('todos', JSON.stringify(todos));
-    }
-    
-    addTodoBtn.addEventListener('click', function() {
-        const todoText = todoInput.value.trim();
-        if (todoText) {
-            todos.push({ text: todoText, completed: false });
-            todoInput.value = '';
-            renderTodos();
-        }
-    });
-    
+    addTodoBtn.addEventListener('click', addTask);
     todoInput.addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
-            addTodoBtn.click();
+            addTask();
         }
     });
     
-    todoList.addEventListener('click', function(e) {
-        if (e.target.classList.contains('toggle-btn')) {
-            const index = e.target.dataset.index;
-            todos[index].completed = !todos[index].completed;
-            renderTodos();
-        } else if (e.target.classList.contains('delete-btn')) {
-            const index = e.target.dataset.index;
-            todos.splice(index, 1);
-            renderTodos();
-        }
+    function addTask() {
+        const taskText = todoInput.value.trim();
+        if (taskText === '') return;
+        
+        taskCount++;
+        const priority = prioritySelect.value;
+        
+        const taskCard = document.createElement('div');
+        taskCard.className = `task-card priority-${priority}`;
+        
+        taskCard.innerHTML = `
+            <div class="task-content">
+                <span class="task-priority priority-${priority}">${priority}</span>
+                <span class="task-text">${taskText}</span>
+            </div>
+            <button class="icon-button check-icon" title="Mark as done">
+                <i class="fas fa-check"></i>
+            </button>
+            <button class="icon-button trash-icon" title="Delete task">
+                <i class="fas fa-trash"></i>
+            </button>
+        `;
+        
+        todoList.appendChild(taskCard);
+        todoInput.value = '';
+        
+        // Toggle completed state
+        const checkButton = taskCard.querySelector('.check-icon');
+        checkButton.addEventListener('click', function() {
+            taskCard.classList.toggle('completed');
+        });
+        
+        // Delete task
+        const deleteBtn = taskCard.querySelector('.trash-icon');
+        deleteBtn.addEventListener('click', function() {
+            // Add a fade-out animation before removing
+            taskCard.style.transition = 'opacity 0.3s ease';
+            taskCard.style.opacity = '0';
+            setTimeout(() => {
+                taskCard.remove();
+            }, 300);
+        });
+    }
+    
+    // Duck interactivity
+    duckPetSection.addEventListener('click', function(e) {
+        // Make duck "jump" with animation
+        duck.style.transition = 'transform 0.3s ease-out';
+        duck.style.transform = 'translateY(-20px)';
+        
+        // Create ripple effect in the pond
+        const ripple = document.createElement('div');
+        ripple.style.position = 'absolute';
+        ripple.style.width = '40px';
+        ripple.style.height = '40px';
+        ripple.style.backgroundColor = 'rgba(255, 255, 255, 0.3)';
+        ripple.style.borderRadius = '50%';
+        ripple.style.zIndex = '1';
+        ripple.style.animation = 'ripple 1s ease-out';
+        
+        // Position ripple near the duck
+        const duckRect = duck.getBoundingClientRect();
+        const sectionRect = duckPetSection.getBoundingClientRect();
+        ripple.style.left = `${(duckRect.left + duckRect.width/2) - sectionRect.left - 20}px`;
+        ripple.style.top = `${(duckRect.bottom) - sectionRect.top - 10}px`;
+        
+        duckPetSection.appendChild(ripple);
+        
+        // Return duck to original position
+        setTimeout(() => {
+            duck.style.transform = 'translateY(0)';
+        }, 300);
+        
+        // Remove ripple after animation
+        setTimeout(() => {
+            duckPetSection.removeChild(ripple);
+        }, 1000);
     });
     
-    // Initialize
+    // Add sample tasks for demonstration
+    function addSampleTasks() {
+        const sampleTasks = [
+            { text: "Complete homework", priority: "high" },
+            { text: "Walk the dog", priority: "medium" },
+            { text: "Read a book", priority: "low" }
+        ];
+        
+        sampleTasks.forEach(task => {
+            todoInput.value = task.text;
+            prioritySelect.value = task.priority;
+            addTask();
+        });
+    }
+    
+    // Initialize calendar
     renderCalendar();
-    renderTodos();
+    
+    // Uncomment to add sample tasks when page loads
+    // addSampleTasks();
 });
