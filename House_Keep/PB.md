@@ -29,11 +29,11 @@
 
 12. As a user, I want to earn “Quack Coins” for completing tasks so that I can unlock in-game rewards.
 
-13. As as user, I want to add my friends, view their profiles, and chat with them about their virtual pet ducks.
+13. As as user, I want to sign up for an account quickly.
 
 14. As a user, I want to unlock special themed ducks based on my productivity habits so that my virtual pet reflects my personal progress and style.
 
-15. As a user, I want to share my duck’s progress on social media so that I can celebrate my productivity milestones with friends.
+15. As a user, I want to be able to easily login into my account.
 
 16. As a user, I want to set different levels of task difficulty so that I can challenge myself with more rewarding productivity goals.
 
