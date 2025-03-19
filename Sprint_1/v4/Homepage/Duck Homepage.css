@@ -410,3 +410,51 @@ body {
         height: 24px; /* Smaller height for mobile */
     }
 }
+
+/* Add these styles to your existing Duck Homepage.css file */
+
+/* For the reward notification when completing tasks */
+.reward-notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #4caf50;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.reward-notification div:first-child {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.reward-icon {
+    font-size: 18px;
+    margin: 0 5px;
+}
+
+/* Completed task styling */
+.task-card.completed {
+    background-color: #f0f8f0;
+    border-left: 4px solid #4caf50;
+    opacity: 0.8;
+}
+
+.task-card.completed .task-text {
+    text-decoration: line-through;
+    color: #666;
+}
+
+.task-card.completed .check-icon {
+    background-color: #4caf50;
+    color: white;
+}
