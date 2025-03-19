@@ -1,4 +1,4 @@
-/* Variables from both stylesheets */
+/* Variables */
 :root {
     --duck-yellow: #ffeb3b;
     --duck-orange: #ff9800;
@@ -8,6 +8,10 @@
     --reed-green: #228B22;
     --bread-brown: #D2691E;
     --water-blue: #00BFFF;
+    --sidebar-bg: #333;
+    --sidebar-text: #fff;
+    --sidebar-hover: #555;
+    --sidebar-active: #ff9800;
 }
 
 /* General Styles */
@@ -27,6 +31,7 @@ body {
     align-items: center;
     padding: 20px;
     overflow: hidden;
+    position: relative;
 }
 
 .game-container {
@@ -36,6 +41,85 @@ body {
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    z-index: 1;
+    margin-left: 60px; /* Space for collapsed sidebar */
+    transition: margin-left 0.3s ease;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 60px;
+    background-color: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    transition: width 0.3s ease;
+    z-index: 100;
+    overflow: hidden;
+}
+
+.sidebar.expanded {
+    width: 240px;
+}
+
+.sidebar-toggle {
+    padding: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.sidebar-header {
+    padding: 20px;
+    font-weight: bold;
+    font-size: 18px;
+    display: none;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.sidebar.expanded .sidebar-header {
+    display: block;
+}
+
+.sidebar-nav {
+    padding: 10px 0;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    color: var(--sidebar-text);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background-color: var(--sidebar-hover);
+}
+
+.nav-item.active {
+    background-color: var(--sidebar-active);
+    color: #fff;
+}
+
+.nav-icon {
+    font-size: 20px;
+    width: 24px;
+    text-align: center;
+    margin-right: 15px;
+}
+
+.nav-text {
+    display: none;
+    white-space: nowrap;
+}
+
+.sidebar.expanded .nav-text {
+    display: inline;
 }
 
 /* Header Section */
@@ -106,14 +190,6 @@ h1 {
     background-color: var(--duck-yellow);
 }
 
-.hunger-bar {
-    background-color: var(--bread-brown);
-}
-
-.thirst-bar {
-    background-color: var(--water-blue);
-}
-
 /* Game Area */
 .game-area {
     position: relative;
@@ -122,7 +198,7 @@ h1 {
     overflow: hidden;
 }
 
-/* Duck Styling */
+/* Duck Styling - Improved visibility for wings */
 .duck {
     position: absolute;
     width: 120px;
@@ -185,8 +261,10 @@ h1 {
     top: 15px;
     left: 15px;
     transform-origin: 100% 50%;
-    z-index: 1;
+    z-index: 3; /* Increased z-index to make wing more visible */
     transition: transform 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.1); /* Add subtle border for better visibility */
+    box-shadow: 2px 2px 3px rgba(0,0,0,0.1); /* Add subtle shadow for depth */
 }
 
 /* Game Controls */
@@ -224,26 +302,6 @@ h1 {
 }
 
 /* Game Elements */
-.food, .water {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    opacity: 0;
-    bottom: 50px;
-    transition: all 0.5s ease;
-}
-
-.food {
-    background-color: var(--bread-brown);
-    left: 30%;
-}
-
-.water {
-    background-color: var(--water-blue);
-    right: 30%;
-}
-
 .ripple {
     position: absolute;
     border-radius: 50%;
@@ -280,19 +338,6 @@ h1 {
     opacity: 0;
     transition: opacity 0.5s ease;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-}
-
-.egg {
-    position: absolute;
-    width: 25px;
-    height: 35px;
-    background-color: white;
-    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-    bottom: 60px;
-    left: 45%;
-    opacity: 0;
-    z-index: 1;
-    transition: all 0.5s ease;
 }
 
 /* Settings */
@@ -384,17 +429,9 @@ input[type="text"] {
 }
 
 /* Achievements */
-.achievements {
-    padding: 15px;
-    background-color: rgba(255, 255, 255, 0.3);
-}
-
-.achievements h3 {
-    text-align: center;
-    color: #000;
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 15px;
+.achievements-list {
+    max-height: 300px;
+    overflow-y: auto;
 }
 
 .achievement {
@@ -451,8 +488,58 @@ input[type="text"] {
     }
 }
 
+/* Food and Water Emoji Animations */
+.food-emoji, .water-emoji {
+    position: absolute;
+    font-size: 24px;
+    top: -50px;
+    opacity: 0;
+    transition: all 1s ease;
+    z-index: 6;
+}
+
+.food-emoji {
+    left: 30%;
+}
+
+.water-emoji {
+    right: 30%;
+}
+
+/* Animation for falling food and water */
+@keyframes fallDown {
+    0% {
+        top: -50px;
+        opacity: 1;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        top: 120px;
+        opacity: 0;
+    }
+}
+
+/* Adding a medal icon to unlocked achievements */
+.achievement.unlocked .achievement-title::before {
+    content: "🏅 ";
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
+    .game-container {
+        margin-left: 50px; /* Smaller margin for mobile */
+    }
+    
+    .sidebar {
+        width: 50px;
+    }
+    
+    .sidebar.expanded {
+        width: 200px;
+    }
+    
     .stats-container {
         flex-direction: column;
     }
@@ -479,5 +566,14 @@ input[type="text"] {
     .control-btn {
         width: 100%;
         justify-content: center;
+    }
+    
+    .modal-content {
+        width: 95%;
+        max-width: 350px;
+    }
+    
+    .achievements-list {
+        max-height: 250px;
     }
 }
