@@ -7,6 +7,37 @@
     <link rel="stylesheet" href="Duck Virtual Pet.css">
 </head>
 <body>
+    <!-- Sidebar Navigation -->
+    <!-- calendar, todo and profile html's are placeholders -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-toggle" id="sidebarToggle">≡</div>
+        <div class="sidebar-content">
+            <div class="sidebar-header">Menu</div>
+            <nav class="sidebar-nav">
+                <a href="Duck Homepage.html" class="nav-item active">
+                    <span class="nav-icon">🏠</span>
+                    <span class="nav-text">Home</span>
+                </a>
+                <a href="calendar.html" class="nav-item">  
+                    <span class="nav-icon">📅</span>
+                    <span class="nav-text">Calendar</span>
+                </a>
+                <a href="todo.html" class="nav-item">
+                    <span class="nav-icon">✓</span>
+                    <span class="nav-text">To-Do List</span>
+                </a>
+                <a href="Duck Virtual Pet.html" class="nav-item">
+                    <span class="nav-icon">🦆</span>
+                    <span class="nav-text">Duck Pet</span>
+                </a>
+                <a href="profile.html" class="nav-item">
+                    <span class="nav-icon">👤</span>
+                    <span class="nav-text">Profile</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+
     <div class="game-container">
         <div class="header">
             <button class="settings">⚙️</button>
@@ -26,18 +57,6 @@
                     <div class="progress-bar xp-bar" id="xpBar"></div>
                 </div>
             </div>
-            <div class="stat">
-                <div class="stat-label">Hunger</div>
-                <div class="progress-container">
-                    <div class="progress-bar hunger-bar" id="hungerBar"></div>
-                </div>
-            </div>
-            <div class="stat">
-                <div class="stat-label">Thirst</div>
-                <div class="progress-container">
-                    <div class="progress-bar thirst-bar" id="thirstBar"></div>
-                </div>
-            </div>
         </div>
         
         <div class="game-area" id="gameArea">
@@ -48,33 +67,17 @@
                 <div class="duck-eye"></div>
                 <div class="duck-wing" id="duckWing"></div>
             </div>
-            <div class="food" id="food"></div>
-            <div class="water" id="water"></div>
+            <div class="food-emoji" id="foodEmoji">🍞</div>
+            <div class="water-emoji" id="waterEmoji">💧</div>
             <div class="level-up" id="levelUp">Level Up!</div>
             <div class="mood" id="mood"></div>
-            <div class="egg" id="egg"></div>
         </div>
         
         <div class="controls">
-            <button class="control-btn" id="feedBtn">🍞 Feed Duck</button>
-            <button class="control-btn" id="waterBtn">💧 Give Water</button>
+            <button class="control-btn" id="feedBtn">🍞 Feed (<span id="feedCount">0</span>)</button>
+            <button class="control-btn" id="waterBtn">💧 Water (<span id="waterCount">0</span>)</button>
             <button class="control-btn" id="playBtn">🎮 Play</button>
-        </div>
-        
-        <div class="achievements">
-            <h3>Achievements</h3>
-            <div class="achievement" id="achievement1">
-                <div class="achievement-title">First Steps</div>
-                <div class="achievement-desc">Reach level 2 with your duck</div>
-            </div>
-            <div class="achievement" id="achievement2">
-                <div class="achievement-title">Well Fed</div>
-                <div class="achievement-desc">Feed your duck 10 times</div>
-            </div>
-            <div class="achievement" id="achievement3">
-                <div class="achievement-title">Hydrated</div>
-                <div class="achievement-desc">Give your duck water 10 times</div>
-            </div>
+            <button class="control-btn" id="achievementsBtn">🏅 Achievements</button>
         </div>
     </div>
     
@@ -89,6 +92,37 @@
                 <input type="text" id="duckName" placeholder="Enter duck name">
             </div>
             <button class="save-btn" id="saveSettings">Save Settings</button>
+        </div>
+    </div>
+    
+    <div class="modal" id="achievementsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Achievements</h3>
+                <button class="close-modal" id="closeAchievements">×</button>
+            </div>
+            <div class="achievements-list">
+                <div class="achievement" id="achievement1">
+                    <div class="achievement-title">First Steps</div>
+                    <div class="achievement-desc">Reach level 2 with your duck</div>
+                </div>
+                <div class="achievement" id="achievement2">
+                    <div class="achievement-title">Well Fed</div>
+                    <div class="achievement-desc">Feed your duck 10 times</div>
+                </div>
+                <div class="achievement" id="achievement3">
+                    <div class="achievement-title">Hydrated</div>
+                    <div class="achievement-desc">Give your duck water 10 times</div>
+                </div>
+                <div class="achievement" id="achievement4">
+                    <div class="achievement-title">Duck Whisperer</div>
+                    <div class="achievement-desc">Play with your duck 20 times</div>
+                </div>
+                <div class="achievement" id="achievement5">
+                    <div class="achievement-title">Master Caretaker</div>
+                    <div class="achievement-desc">Reach level 5</div>
+                </div>
+            </div>
         </div>
     </div>
 
