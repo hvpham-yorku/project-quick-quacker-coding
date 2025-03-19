@@ -95,7 +95,16 @@ To make task management more engaging, the app includes:
   - #3 As Anna Chen, I want my virtual pet duck to grow and evolve when I complete tasks so that I feel motivated to stay productive.
     
   - #6 As Ryan Mitchell, I want to use the virtual pet duck as a companion as I navigate through the new city.
-
+ 
+- **Gamification & Rewards System:**
+  - #7 As Anna Chen, I want to maintain streaks and unlock achievement badges so that I feel rewarded for consistent productivity.
+ 
+  - #12 As a user, I want to earn “Quack Coins” for completing tasks so that I can unlock in-game rewards.
+    
+- **User Authentication:**
+  - #13 As as user, I want to sign up for an account quickly.
+ 
+  - #15 As a user, I want to be able to easily login into my account.
 
 ## Participants 
 The following team members are involved in this release:
