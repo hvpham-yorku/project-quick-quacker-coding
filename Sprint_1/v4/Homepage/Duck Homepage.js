@@ -90,13 +90,24 @@ document.addEventListener('DOMContentLoaded', function() {
         renderCalendar();
     });
     
-    // To-Do List functionality
+    // To-Do List functionality with rewards system
     const todoInput = document.getElementById('todoInput');
     const prioritySelect = document.getElementById('prioritySelect');
     const addTodoBtn = document.getElementById('addTodo');
     const todoList = document.getElementById('todoList');
     
     let taskCount = 0;
+    
+    // Initialize or get duck rewards from localStorage
+    let duckRewards = JSON.parse(localStorage.getItem('duckRewards')) || {
+        feedCount: 0,
+        drinkCount: 0
+    };
+    
+    // Function to update duck rewards in localStorage
+    function updateDuckRewards() {
+        localStorage.setItem('duckRewards', JSON.stringify(duckRewards));
+    }
     
     addTodoBtn.addEventListener('click', addTask);
     todoInput.addEventListener('keypress', function(e) {
@@ -131,10 +142,20 @@ document.addEventListener('DOMContentLoaded', function() {
         todoList.appendChild(taskCard);
         todoInput.value = '';
         
-        // Toggle completed state
+        // Toggle completed state and give rewards when completed
         const checkButton = taskCard.querySelector('.check-icon');
         checkButton.addEventListener('click', function() {
-            taskCard.classList.toggle('completed');
+            if (!taskCard.classList.contains('completed')) {
+                taskCard.classList.add('completed');
+                
+                // Add rewards - 2 feed and 2 drink counts per task
+                duckRewards.feedCount += 2;
+                duckRewards.drinkCount += 2;
+                updateDuckRewards();
+                
+                // Show reward notification
+                showRewardNotification();
+            }
         });
         
         // Delete task
@@ -147,6 +168,33 @@ document.addEventListener('DOMContentLoaded', function() {
                 taskCard.remove();
             }, 300);
         });
+    }
+    
+    // Function to show reward notification
+    function showRewardNotification() {
+        const notification = document.createElement('div');
+        notification.className = 'reward-notification';
+        notification.innerHTML = `
+            <div>Task Completed!</div>
+            <div>Reward: <span class="reward-icon">🍞</span> +2 <span class="reward-icon">💧</span> +2</div>
+        `;
+        
+        document.body.appendChild(notification);
+        
+        // Animate notification appearance
+        setTimeout(() => {
+            notification.style.opacity = '1';
+            notification.style.transform = 'translateY(0)';
+        }, 10);
+        
+        // Remove notification after a delay
+        setTimeout(() => {
+            notification.style.opacity = '0';
+            notification.style.transform = 'translateY(-20px)';
+            setTimeout(() => {
+                document.body.removeChild(notification);
+            }, 300);
+        }, 3000);
     }
     
     // Duck interactivity
