@@ -53,4 +53,17 @@ The following user stories will be implemented in this sprint:
  
   - #15 As a user, I want to be able to easily login into my account.
 
+## Spikes
+Spikes are research tasks required before development:
+- **Authentication and Security:** Research best practices for user authentication.
+- **Task Data Storage:** Evaluate database structure for task management.
+- **Duck Animation:** Determine the best way to animate the virual pet. 
 
+## Task Breakdown
+| Task | Assigned To | Target User Story |
+|------|:------------:|:------------:|
+| Implement user sign-up and login system | Amnol, Urgyen | 13, 15 
+| Set up initial database architecture | Michael | 13, 15
+| Create task creation and editing functionality | Kristin | 1, 5 
+| Develop virtual pet growth system based on task completion and level | Phoebe | 3, 6, 8, 9, 16 
+| UI/UX Design for task manager and virtual pet | Phoebe | 7, 12 
