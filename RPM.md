@@ -100,6 +100,6 @@ To make task management more engaging, the app includes:
 ## Participants 
 The following team members are involved in this release:
 - **Product Owner:** Michael
-- **Developers:** Phoebe, Amnol, Urgyen, Kristin
+- **Developers:** Phoebe, Amnol, Urgyen
+- **Scrum Master:** Kristin
 - **Scrum Demo TA:** TA 
-- **Scrum Master:**
