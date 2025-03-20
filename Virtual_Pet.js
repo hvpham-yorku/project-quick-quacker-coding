@@ -8,6 +8,7 @@ let gameState = {
     feedCount: 0,
     waterCount: 0,
     playCount: 0,
+    quackerCoins: 0,
     lastInteraction: Date.now(),
     achievements: {
         reachedLevel2: false,
@@ -22,6 +23,11 @@ let gameState = {
 let duckRewards = JSON.parse(localStorage.getItem('duckRewards')) || {
     feedCount: 0,
     drinkCount: 0
+};
+
+// Get task completion data from localStorage
+let taskData = JSON.parse(localStorage.getItem('taskData')) || {
+    completedTasks: []
 };
 
 // Load game state from local storage if available
@@ -74,6 +80,7 @@ const achievement4 = document.getElementById('achievement4');
 const achievement5 = document.getElementById('achievement5');
 const sidebar = document.getElementById('sidebar');
 const sidebarToggle = document.getElementById('sidebarToggle');
+const coinDisplay = document.getElementById('coinDisplay');
 
 // Initialize the game
 updateUI();
@@ -101,7 +108,7 @@ const navItems = document.querySelectorAll('.nav-item');
 navItems.forEach(item => {
     item.addEventListener('click', function(e) {
         // Only prevent default if it's the Duck Pet link that's already active
-        if (item.href.includes('Virtual_Pet.html') && item.classList.contains('active')) {
+        if (item.href.includes('Duck Virtual Pet.html') && item.classList.contains('active')) {
             e.preventDefault();
         }
         
@@ -248,7 +255,6 @@ function addXP(amount) {
     updateUI(); // Update UI to show XP changes
 }
 
-// MISSING FUNCTIONS ADDED BELOW
 
 function updateUI() {
     // Update duck name
@@ -263,12 +269,38 @@ function updateUI() {
     feedCountDisplay.textContent = duckRewards.feedCount;
     waterCountDisplay.textContent = duckRewards.drinkCount;
     
+    // Quacker Coins display
+    coinDisplay.textContent = gameState.quackerCoins;
+
     // Update achievement indicators
     updateAchievementDisplay();
     
     // Make sure wings are visible
     duckWing.style.display = 'block';
     duckWing.style.opacity = '1';
+}
+
+function addQuackerCoins(priority) {
+    let coinsToAdd = 0;
+    
+    switch(priority) {
+        case 'low':
+            coinsToAdd = 1;
+            break;
+        case 'medium':
+            coinsToAdd = 3;
+            break;
+        case 'high':
+            coinsToAdd = 5;
+            break;
+        default:
+            coinsToAdd = 1;
+    }
+    
+    gameState.quackerCoins += coinsToAdd;
+    updateUI();
+    showMood(`Earned ${coinsToAdd} Quacker Coins!`);
+    saveGame();
 }
 
 function saveGame() {
@@ -436,6 +468,21 @@ function toggleSidebar() {
     } else {
         document.querySelector('.game-container').style.marginLeft = '60px';
     }
+    
+    // Fix for sidebar display issues
+    sidebar.style.display = 'block';
+    
+    // Show sidebar header when expanded
+    const sidebarHeader = document.querySelector('.sidebar-header');
+    if (sidebarHeader) {
+        sidebarHeader.style.display = sidebar.classList.contains('expanded') ? 'block' : 'none';
+    }
+    
+    // Show nav text when expanded
+    const navTexts = document.querySelectorAll('.nav-text');
+    navTexts.forEach(text => {
+        text.style.display = sidebar.classList.contains('expanded') ? 'inline' : 'none';
+    });
 }
 
 // Initialize the sidebar state
@@ -445,6 +492,21 @@ function initializeSidebar() {
         sidebar.classList.remove('expanded');
         document.querySelector('.game-container').style.marginLeft = '50px';
     }
+    
+    // Ensure sidebar is visible
+    sidebar.style.display = 'block';
+    
+    // Show/hide sidebar header based on expanded state
+    const sidebarHeader = document.querySelector('.sidebar-header');
+    if (sidebarHeader) {
+        sidebarHeader.style.display = sidebar.classList.contains('expanded') ? 'block' : 'none';
+    }
+    
+    // Show/hide nav text based on expanded state
+    const navTexts = document.querySelectorAll('.nav-text');
+    navTexts.forEach(text => {
+        text.style.display = sidebar.classList.contains('expanded') ? 'inline' : 'none';
+    });
 }
 
 // Call initialize sidebar on load
@@ -461,3 +523,68 @@ function addRewards(foodAmount, waterAmount) {
     updateUI();
     showMood("Rewards added!");
 }
+
+// Function to handle task completion
+function completeTask(taskId, priority) {
+    // Only process if the task isn't already completed
+    if (!taskData.completedTasks.includes(taskId)) {
+        // Add task to completed tasks
+        taskData.completedTasks.push(taskId);
+        
+        // Add rewards based on priority
+        let foodReward = 1;
+        let waterReward = 1;
+        
+        // Higher priority tasks give more rewards
+        if (priority === 'medium') {
+            foodReward = 2;
+            waterReward = 2;
+        } else if (priority === 'high') {
+            foodReward = 3;
+            waterReward = 3;
+        }
+        
+        // Add food and water rewards
+        duckRewards.feedCount += foodReward;
+        duckRewards.drinkCount += waterReward;
+        
+        // Add Quacker Coins based on priority
+        addQuackerCoins(priority);
+        
+        // Save to localStorage
+        localStorage.setItem('taskData', JSON.stringify(taskData));
+        localStorage.setItem('duckRewards', JSON.stringify(duckRewards));
+        
+        // Update UI
+        updateUI();
+        
+        return true;
+    }
+    return false;
+}
+
+// Function to reset completed tasks (for a new day)
+function resetCompletedTasks() {
+    taskData.completedTasks = [];
+    localStorage.setItem('taskData', JSON.stringify(taskData));
+}
+
+// Check for day change and reset tasks if needed
+function checkDayChange() {
+    const lastDate = localStorage.getItem('lastActiveDate');
+    const today = new Date().toDateString();
+    
+    if (lastDate !== today) {
+        resetCompletedTasks();
+        localStorage.setItem('lastActiveDate', today);
+    }
+}
+
+// Run day change check on load
+checkDayChange();
+
+// Expose the completeTask function for other pages to use
+window.duckRewardSystem = {
+    completeTask: completeTask,
+    addQuackerCoins: addQuackerCoins
+};
