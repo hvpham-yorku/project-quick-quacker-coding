@@ -84,3 +84,6 @@ This feature is wher users have to creata an account using their email to use th
 
 ### Task Creation and Organization
 This feature allows users to create tasks and organize based on their priorty of low, medium, or high
+
+### Virtual Pet Duck
+This application has a virtual pet duck that currently levels up the more you play with it, other features related to the duck are coming in Sprint 2
