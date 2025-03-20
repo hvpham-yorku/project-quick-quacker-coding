@@ -27,39 +27,39 @@
       </div>
     </div>
 
-    <!-- Organizer Section -->
-    <div class="organizer-section">
-      <!-- Calendar -->
-      <div class="calendar-container">
-        <h2>Calendar</h2>
-        <div class="calendar-header">
-          <button id="prevMonth"><i class="fas fa-chevron-left"></i></button>
-          <div id="currentMonth"></div>
-          <button id="nextMonth"><i class="fas fa-chevron-right"></i></button>
-        </div>
-        <div class="weekdays">
-          <div>Sun</div>
-          <div>Mon</div>
-          <div>Tue</div>
-          <div>Wed</div>
-          <div>Thu</div>
-          <div>Fri</div>
-          <div>Sat</div>
-        </div>
-        <div class="calendar-days" id="calendarDays"></div>
-      </div>
-
-      <!-- To-Do List -->
-      <div class="todo-container">
-        <h2>To-Do List</h2>
-        <div class="todo-header">
-          <input type="text" id="todoInput" placeholder="Add a new task...">
-          <select id="prioritySelect" class="priority-select">
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
-          </select>
-          <button id="addTodo">Add</button>
+    <!-- Login Section -->
+    <div class="login-section">
+      <div class="login-container">
+        <h2>Welcome Back!</h2>
+        <p class="login-subtitle">Sign in to continue your quacking journey</p>
+        
+        <form id="loginForm" class="login-form">
+          <div class="form-group">
+            <label for="username"><i class="fas fa-user"></i></label>
+            <input type="text" id="username" placeholder="Username" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="password"><i class="fas fa-lock"></i></label>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="button" class="toggle-password" title="Show/Hide Password">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+          
+          <div class="form-options">
+            <div class="remember-me">
+              <input type="checkbox" id="rememberMe">
+              <label for="rememberMe">Remember me</label>
+            </div>
+            <a href="#" class="forgot-password">Forgot Password?</a>
+          </div>
+          
+          <button type="submit" class="login-button">Sign In</button>
+        </form>
+        
+        <div class="signup-option">
+          <p>Don't have an account? <a href="#">Sign Up</a></p>
         </div>
       </div>
     </div>
