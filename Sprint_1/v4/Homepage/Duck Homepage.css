@@ -17,6 +17,8 @@ body {
     height: 100vh;
     max-width: 1200px;
     margin: 0 auto;
+    margin-left: 70px; /* Space for collapsed sidebar */
+    transition: margin-left 0.3s ease;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     background: linear-gradient(180deg, #ffee9e 0%, #b3ebdd 100%);
     border-radius: 15px;
@@ -25,7 +27,7 @@ body {
 
 /* Duck Pet Section */
 .duck-pet-section {
-    height: 50%;
+    height: 50%; /* Reduced from 30% to 20% */
     background-color: rgba(255, 255, 255, 0.3);
     display: flex;
     flex-direction: column;
@@ -37,19 +39,19 @@ body {
 
 .duck-header {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 5px; /* Further reduced margin */
 }
 
 .duck-header h1 {
     color: #000;
-    font-size: 32px;
+    font-size: 24px; /* Further reduced font size */
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
 }
 
 .duck-header p {
     color: #555;
-    font-size: 14px;
+    font-size: 12px; /* Further reduced font size */
 }
 
 .duck-display {
@@ -71,11 +73,11 @@ body {
     box-shadow: 0 0 20px rgba(102, 204, 255, 0.5);
 }
 
-/* Duck Styling */
+/* Duck Styling - REDUCED SIZE */
 .duck {
     position: relative;
-    width: 120px;
-    height: 120px;
+    width: 80px; /* Further reduced size */
+    height: 80px; /* Further reduced size */
     z-index: 2;
     display: flex;
     flex-direction: column;
@@ -84,59 +86,59 @@ body {
 }
 
 .duck-body {
-    width: 80px;
-    height: 60px;
+    width: 60px; /* Further reduced size */
+    height: 40px; /* Further reduced size */
     background-color: #ffeb3b;
     border-radius: 50%;
     position: absolute;
-    top: 30px;
-    left: 20px;
+    top: 25px;
+    left: 10px;
 }
 
 .duck-head {
-    width: 50px;
-    height: 50px;
+    width: 35px; /* Further reduced size */
+    height: 35px; /* Further reduced size */
     background-color: #ffeb3b;
     border-radius: 50%;
     position: absolute;
-    top: 10px;
-    left: 60px;
+    top: 8px;
+    left: 40px;
 }
 
 .duck-bill {
-    width: 30px;
-    height: 15px;
+    width: 20px; /* Further reduced size */
+    height: 10px; /* Further reduced size */
     background-color: #ff9800;
     border-radius: 30%;
     position: absolute;
-    top: 25px;
-    left: 100px;
+    top: 20px;
+    left: 65px;
 }
 
 .duck-eye {
-    width: 8px;
-    height: 8px;
+    width: 5px; /* Further reduced size */
+    height: 5px; /* Further reduced size */
     background-color: #555;
     border-radius: 50%;
     position: absolute;
-    top: 20px;
-    left: 85px;
+    top: 15px;
+    left: 60px;
 }
 
 .duck-wing {
-    width: 40px;
-    height: 20px;
+    width: 30px; /* Further reduced size */
+    height: 15px; /* Further reduced size */
     background-color: #ffcc4d;
     border-radius: 50%;
     position: absolute;
-    top: 45px;
-    left: 30px;
+    top: 35px;
+    left: 20px;
     transform: rotate(20deg);
 }
 
-/* Organizer Section */
+/* Organizer Section - FURTHER INCREASED HEIGHT */
 .organizer-section {
-    height: 50%;
+    height: 80%; /* Increased from 70% to 80% */
     display: flex;
     padding: 20px 40px;
     background-color: rgba(255, 255, 255, 0.3);
@@ -411,25 +413,20 @@ body {
     }
 }
 
-/* Add these styles to your existing Duck Homepage.css file */
-
-/* For the reward notification when completing tasks */
+/* Reward notification */
 .reward-notification {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #4caf50;
+    bottom: 20px; 
+    right: 20px; 
+    background-color: #4CAF50;
     color: white;
-    padding: 15px 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 1000;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.3s, transform 0.3s;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1000;
 }
 
 .reward-notification div:first-child {
@@ -438,8 +435,8 @@ body {
 }
 
 .reward-icon {
-    font-size: 18px;
-    margin: 0 5px;
+    display: inline-block;
+    margin: 0 2px;
 }
 
 /* Completed task styling */
@@ -457,4 +454,134 @@ body {
 .task-card.completed .check-icon {
     background-color: #4caf50;
     color: white;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 68px;
+    background-color: #ffdc73; /* Duck yellow for background */
+    border-right: 2px solid #ff9800; /* Orange border */
+    color: #333;
+    transition: width 0.3s ease;
+    z-index: 100;
+    overflow: hidden;
+    display: block !important;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar.expanded {
+    width: 240px;
+}
+
+
+.sidebar-toggle {
+    position: relative;
+    padding: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    text-align: left;
+    font-size: 24px;
+    color: #996633; /* Duck brown for icon */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Close button for sidebar */
+.sidebar-close {
+    display: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #996633;
+}
+
+.sidebar.expanded .sidebar-close {
+    display: block;
+}
+
+.sidebar-toggle:hover {
+    background-color: #ffcc00; /* Brighter yellow for hover */
+}
+
+.sidebar-header {
+    padding: 15px 20px;
+    font-weight: bold;
+    font-size: 18px;
+    display: block;
+    border-bottom: 1px solid rgba(153, 102, 51, 0.2); /* Light brown border */
+    color: #996633; /* Duck brown for text */
+}
+
+.sidebar-content {
+    width: 240px; /* Match the expanded width */
+}
+
+.sidebar-nav {
+    padding: 10px 0;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    color: #996633; /* Duck brown for text */
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border-radius: 0 25px 25px 0;
+    margin: 5px 0;
+}
+
+.nav-item:hover {
+    background-color: #ffcc00; /* Brighter yellow for hover */
+}
+
+.nav-item.active {
+    background-color: #ff9800; /* Duck orange for active items */
+    color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-icon {
+    font-size: 20px;
+    width: 24px;
+    text-align: center;
+    margin-right: 15px;
+}
+
+.nav-text {
+    white-space: nowrap;
+    font-weight: 500;
+}
+
+.sidebar.expanded .nav-text {
+    display: inline !important;
+}
+
+/* Adjust the container margin for the sidebar */
+.sidebar.expanded ~ .container {
+    margin-left: 240px;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 50px;
+    }
+    
+    .sidebar.expanded {
+        width: 200px;
+    }
+
+    .container {
+        margin-left: 50px; /* Smaller margin for mobile */
+    }
+
+    .sidebar.expanded ~ .container {
+        margin-left: 200px;
+    }
 }
