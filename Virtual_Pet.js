@@ -108,7 +108,7 @@ const navItems = document.querySelectorAll('.nav-item');
 navItems.forEach(item => {
     item.addEventListener('click', function(e) {
         // Only prevent default if it's the Duck Pet link that's already active
-        if (item.href.includes('Duck Virtual Pet.html') && item.classList.contains('active')) {
+        if (item.href.includes('Virtual_Pet.html') && item.classList.contains('active')) {
             e.preventDefault();
         }
         
