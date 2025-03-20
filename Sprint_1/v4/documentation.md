@@ -11,7 +11,8 @@ The **Duck Virtual Pet** project is a web-based interactive virtual pet and orga
 ## 2. Installation & Setup
 
 ### Frontend Setup
-1. Open `Duck Homepage.html` in a browser.
+1. Open `[Duck Homepage.html](https://hvpham-yorku.github.io/project-quick-quacker-coding/
+)` in a browser.
 2. Ensure **Duck Virtual Pet.js** and **Duck Homepage.js** are correctly linked.
 
 ### Backend Setup
