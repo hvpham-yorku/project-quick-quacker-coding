@@ -5,7 +5,7 @@ The **Duck Virtual Pet** project is a web-based interactive virtual pet and orga
 - Take care of a duck pet (feed, give water, play, and level up).
 - Earn rewards by completing tasks (via the to-do list).
 - Use an interactive calendar for scheduling.
-- Login/Register users for personalization (to be implemented).
+- Login/Register users for personalization.
 
 
 ## 2. Installation & Setup
@@ -49,7 +49,7 @@ The **Duck Virtual Pet** project is a web-based interactive virtual pet and orga
 - View and navigate months.
 - Select specific dates to view tasks/events.
 
-### User Authentication (To Be Implemented)
+### User Authentication 
 - Register & Login with secure passwords.
 - JWT-based authentication for protecting user data.
 
@@ -80,7 +80,6 @@ CREATE TABLE tasks (
 ```
 
 ## 5. Future Enhancements
-- User Authentication (in progress)
 - Profile Customization (change duck appearance, add themes)
 - Cloud Storage for Game Progress
 
