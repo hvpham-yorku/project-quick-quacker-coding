@@ -66,4 +66,4 @@ Spikes are research tasks required before development:
 | Set up initial database architecture | Michael | 13, 15
 | Create task creation and editing functionality | Kristin | 1, 5 
 | Develop virtual pet growth system based on task completion and level | Phoebe | 3, 6, 8, 9, 16 
-| UI/UX Design for task manager and virtual pet | Phoebe | 7, 12 
+| UI/UX Design for task manager and virtual pet | Phoebe, Kristin | 7, 12 
