@@ -25,7 +25,7 @@
 - #15 As Ryan Mitchell, I want to receive reminders and notifications throughout the day to help me stay on track.
 
 - #17 As a user, I want the app to provide task suggestions based on my past activity so that I can stay consistent with my productivity.
-One practice that I want to continue is the open commuication within the group. When one is struggling on their part, we try to help each other out as best as possible. 
+
 ## Reflection
 **1. What are practices that you should continue during next sprint?**
   - **Michael:** 
@@ -49,9 +49,8 @@ One practice that I want to continue is the open commuication within the group. 
   - **Amnol:**
 
 **4. What was your best/worst experience during Sprint 1?**
-  - **Michael:** 
+  - **Michael:** 
   - **Phoebe:** 
   - **Kristin:** My best experience is designing the UI, while the worst is when you tweak a code and the entire page gets messed up.
   - **Urgyen:**
   - **Amnol:**
-  
