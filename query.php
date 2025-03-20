@@ -1,11 +1,15 @@
+
+<!--Searches through database to find account-->
 <?php
-$query= "SELECT * FROM table_name ";
-mysqli_query($db, $query);
+$query= "SELECT * FROM login WHERE Username = '$username' AND Password = '$password'";
 
-$result = mysqli_query($db,$query);
-$row = mysqli_fetch_array($result);
 
-while($row = mysqli_fetch_array($result)){
-    echo "".$row["First Name"]."".$row["Last Name"]."".$row["Email"]."".$row["Username"].'br />';}
-mysqli_close($db);
+$result = $conn->query( $query );
+
+if ($result->num_rows > 0){
+    $row = mysqli_fetch_array($result);
+}else{
+    die("Error: username or password are incorrect");
+}
+$conn->close();
 ?>
