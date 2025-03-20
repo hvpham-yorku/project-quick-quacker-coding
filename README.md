@@ -14,10 +14,6 @@ Build and run code on these programming languages:
 
 A scripting language for adding interactivity
 
-### PHP
-
-A server scripting language that will be used to connect databases to the web application
-
 ### HTML
 
 The markup language for structuring web pages 
@@ -84,4 +80,7 @@ We will review and discuss our features, if they are able to be approved. Make c
 ## Sprint 1:
 
 ### Login and Sign-up
-This feature 
+This feature is wher users have to creata an account using their email to use the application
+
+### Task Creation and Organization
+This feature allows users to create tasks and organize based on their priorty of low, medium, or high
