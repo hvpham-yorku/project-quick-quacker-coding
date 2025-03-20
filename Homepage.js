@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Duck Pet Section - Redirect to duck pet HTML on click
     const duckPetSection = document.getElementById('duckPetSection');
     duckPetSection.addEventListener('click', function () {
-        window.location.href = 'Duck Virtual Pet.html';
+        window.location.href = 'Virtual_Pet.html';
     });
 
     // Duck Animation
