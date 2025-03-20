@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(function() {
             // For demo purposes, redirect to homepage after "login"
             // In a real app, you would validate credentials with a server here
-            window.location.href = './homepage.html';
+            window.location.href = 'homepage.html';
             
             // If there's an error, you would do this instead:
             // loginButton.textContent = originalText;
