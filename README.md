@@ -87,3 +87,6 @@ This feature allows users to create tasks and organize based on their priorty of
 
 ### Virtual Pet Duck
 This application has a virtual pet duck that currently levels up the more you play with it, other features related to the duck are coming in Sprint 2
+
+### Database
+This is where accounts will be stored on the server.
