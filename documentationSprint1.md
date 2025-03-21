@@ -1,85 +1,101 @@
-# Duck Virtual Pet - Documentation
+# Quick Quacker 🦆
 
-## 1. Overview
-The **Duck Virtual Pet** project is a web-based interactive virtual pet and organizer that allows users to:
-- Take care of a duck pet (feed, give water, play, and level up).
-- Earn rewards by completing tasks (via the to-do list).
-- Use an interactive calendar for scheduling.
-- Login/Register users for personalization.
+A fun and interactive productivity app with a virtual duck pet! Users can log in, manage tasks, and earn rewards to take care of their pet duck.
 
+---
 
-## 2. Installation & Setup
+## 📁 Project Structure & File Documentation
 
-### Frontend Setup
-1. Open `[Duck Homepage.html](https://hvpham-yorku.github.io/project-quick-quacker-coding/
-)` in a browser.
-2. Ensure **Duck Virtual Pet.js** and **Duck Homepage.js** are correctly linked.
+### `firebase_config.js`
+**Purpose:** Initializes Firebase for the application.
 
-### Backend Setup
-1. Install dependencies in the backend folder:
-   ```sh
-   npm install
-   ```
-2. Start the backend:
-   ```sh
-   npm start
-   ```
-3. Ensure PostgreSQL is running:
-   ```sh
-   pg_ctl -D /usr/local/var/postgres start
-   ```
-4. Connect to the database and check tables:
-   ```sql
-   SELECT * FROM users;
-   SELECT * FROM tasks;
-   ```
+**Key Functions:**
+- `initializeApp(firebaseConfig)`: Starts Firebase services using provided config.
+- `getAnalytics(app)`: Enables Firebase Analytics.
 
-## 3. Features & Functionality
+---
 
-### Virtual Pet System
-- Feed, Give Water, Play with Duck: Earn XP and level up.
-- Duck Animations: Duck moves, flaps wings, and reacts.
-- Achievements: Earn rewards for taking care of the pet.
-- Settings: Change the duck’s name.
+### `firebase-auth.js`
+**Purpose:** Manages Firebase Authentication and login flow.
 
-### Task Management System
-- Add, Complete, Delete Tasks (to-do list functionality).
-- Earn Rewards: Completing tasks gives food & water for the duck.
+**Key Functions:**
+- `getAuth(app)`: Initializes Firebase Authentication.
+- `signInWithEmailAndPassword(auth, email, password)`: Authenticates users.
+- `onAuthStateChanged(auth, callback)`: Checks login state and redirects.
+- `showNotification(message, type)`: Displays status messages.
 
-### Calendar & Organizer
-- View and navigate months.
-- Select specific dates to view tasks/events.
+---
 
-### User Authentication 
-- Register & Login with secure passwords.
-- JWT-based authentication for protecting user data.
+### `login.js`
+**Purpose:** Handles login page UI and animations.
 
+**Key Features:**
+- Toggles password visibility.
+- Simulates login with loading animation.
+- Triggers duck “quack” interaction.
+- Displays success/error notifications.
 
-## 4. Database Schema
-### Users Table
-```sql
-CREATE TABLE users (
-    id SERIAL PRIMARY KEY,
-    username VARCHAR(100) UNIQUE NOT NULL,
-    email VARCHAR(255) UNIQUE NOT NULL,
-    password_hash TEXT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-```
-### Tasks Table
-```sql
-CREATE TABLE tasks (
-    id SERIAL PRIMARY KEY,
-    title VARCHAR(255) NOT NULL,
-    description TEXT,
-    status VARCHAR(50) DEFAULT 'pending',
-    priority VARCHAR(50) DEFAULT 'medium',
-    due_date DATE,
-    user_id INT REFERENCES users(id) ON DELETE CASCADE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-```
+---
 
-## 5. Future Enhancements
-- Profile Customization (change duck appearance, add themes)
-- Cloud Storage for Game Progres
+### `signup.js`
+**Purpose:** Handles user registration and password reset.
+
+**Key Features:**
+- `registerUser(email, password, username)`: Registers new user via Firebase.
+- Validates inputs and confirms password.
+- Provides “Forgot Password” functionality.
+- `showNotification(message, type)`: Shows feedback.
+
+---
+
+### `Homepage.js`
+**Purpose:** Controls homepage UI features and productivity tools.
+
+**Key Features:**
+- Sidebar navigation toggle.
+- Duck animation and interaction.
+- Dynamic calendar rendering.
+- To-do list system with priorities.
+- Rewards for task completion (food, water, coins).
+- LocalStorage management for XP and rewards.
+
+---
+
+### `Virtual_Pet.js`
+**Purpose:** Manages virtual duck pet game.
+
+**Key Features:**
+- Feed, water, and play with your duck.
+- Earn XP and level up.
+- Track achievements (Level 2, Level 5, etc.).
+- Game state saved with `localStorage`.
+- Duck animations (wing flap, bounce, mood).
+- Responsive sidebar and settings.
+
+---
+
+## 🛠️ Technologies Used
+
+- JavaScript (ES6+)
+- HTML/CSS
+- Firebase Authentication & Analytics
+- LocalStorage for game state
+
+---
+
+## 🧪 Features
+
+- Interactive login and signup flow
+- Custom duck animation and rewards system
+- Task-based productivity with real incentives
+- Persistent pet care and XP tracking
+
+---
+
+## 🚀 Getting Started
+
+1. Clone this repo.
+2. Set up Firebase and update your config in `firebase_config.js`.
+3. Open `index.html` or `login.html` in your browser.
+4. Enjoy your journey with Mr. Quackers! 🦆
+
