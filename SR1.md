@@ -29,28 +29,28 @@
 ## Reflection
 **1. What are practices that you should continue during next sprint?**
   - **Michael:** 
-  - **Phoebe:** 
+  - **Phoebe:** I think our group should continue our current approach with daily check-ins on what tasks were done and delegative new ones.
   - **Kristin:** One practice that I want to continue is the open commuication within the group. When one is struggling on their part, we try to help each other out as best as possible. 
-  - **Urgyen:**
-  - **Amnol:**
+  - **Urgyen:** Clear and frequent communication within the team is one practice that we should continue. 
+  - **Amnol:** Use more of the SOLID principles such as Single Responsibility and Dependency Inversion.
 
 **2. What are some new practices that you might want to use during next sprint?**
   - **Michael:** 
-  - **Phoebe:** Read and understand the whole document carefully first before starting. 
+  - **Phoebe:** As for new practices, I'd say to address problems early so that tasks can be re-assigned or solved with others. As well as read and understand the whole document carefully first before starting. 
   - **Kristin:** Assigning a due date per task would be much more helpful so we can stay on track.
-  - **Urgyen:**
-  - **Amnol:**
+  - **Urgyen:** One practice that I would like to introduce is exploring different technologies to determine the best tools for our needs. 
+  - **Amnol:** I plan to use more class diagrams for the consturction of the code.
 
 **3. What are (if any) harmful practices you should stop during next sprint?**
   - **Michael:** 
-  - **Phoebe:** 
+  - **Phoebe:** I think our group should stop leaving some tasks to finish last minute.
   - **Kristin:** Procrastinating is something I think we could lessen for the next sprint.
-  - **Urgyen:**
-  - **Amnol:**
+  - **Urgyen:** Time management skills to ensure that tasks are completed efficiently and avoid last minute rushes. 
+  - **Amnol:** To stop focusing heavily on finishing the feature I'm stuck on while working on other parts of the sprint.
 
 **4. What was your best/worst experience during Sprint 1?**
   - **Michael:** 
-  - **Phoebe:** 
+  - **Phoebe:** For me, the best experience so far is seeing everything come together. 
   - **Kristin:** My best experience is designing the UI, while the worst is when you tweak a code and the entire page gets messed up.
-  - **Urgyen:**
-  - **Amnol:**
+  - **Urgyen:** My worst experience in Sprint 1 would have to be the debugging process.
+  - **Amnol:** I did not have any best experience but worst experience was creating the front end to the back end which was a very big struggle.
